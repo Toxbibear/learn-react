@@ -3,3 +3,10 @@
 button {
   @apply cursor-pointer;
 }
+
+* {
+  @apply box-border;
+  @apply p-0;
+  @apply m-0;
+}
+
