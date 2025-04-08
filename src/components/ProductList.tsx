@@ -18,18 +18,20 @@ const ProductList: React.FC = () => {
     }, []);
 
   return (
-    <div className="w-50% grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 bg-gray-50">
-      {products.map((product) => (
-        <div className='flex justify-center' key={product.id}>
-            <ProductCard
-              key={product.id}
-              name={product.name}
-              description={product.description}
-              price={product.price}
-              imageUrl={product.imageUrl}
-            />
-        </div>
-      ))}
+    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 w-3/4">
+        {products.map((product) => (
+          <div className='flex justify-center w-full' key={product.id}>
+              <ProductCard
+                key={product.id}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+                imageUrl={product.imageUrl}
+              />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

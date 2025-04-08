@@ -4,9 +4,5 @@ button {
   @apply cursor-pointer;
 }
 
-* {
-  @apply pt-0;
-  @apply pb-0;
-  @apply m-0;
-}
+
 
