@@ -5,8 +5,8 @@ button {
 }
 
 * {
-  @apply box-border;
-  @apply p-0;
+  @apply pt-0;
+  @apply pb-0;
   @apply m-0;
 }
 
