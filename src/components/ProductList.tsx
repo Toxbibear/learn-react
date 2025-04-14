@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import axios from "axios";
-import { Product } from "../types";
+import { Product as BaseProduct } from "../types";
+import { useCart } from "../context/CartContext";
 
-interface ProductListProps {
-  handleAddToCart: (product: Product) => void;
+interface Product extends BaseProduct {
+  quantity?: number; // Make quantity optional
 }
 
-const ProductList: React.FC<ProductListProps> = ({ handleAddToCart }) => {
+const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const {addToCart} = useCart();
+  
   useEffect(() => {
     axios
       .get<Product[]>("http://localhost:3000/products")
@@ -46,12 +48,12 @@ const ProductList: React.FC<ProductListProps> = ({ handleAddToCart }) => {
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-50">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 w-3/4">
         {products.map((product) => (
-          <div className="flex justify-center w-full" key={product.id}>
+            <div className="flex justify-center w-full" key={product.id}>
             <ProductCard
               product={product}
-              onAddToCart={handleAddToCart}
+              onAddToCart={(product) => addToCart({ ...product, quantity: product. || 1 })}
             />
-          </div>
+            </div>
         ))}
       </div>
     </div>
